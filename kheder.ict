@@ -1,0 +1,325 @@
+ctjsVersion: 2.0.2
+notes: /* empty */
+libs:
+  place:
+    gridX: 1200
+    gridY: 1200
+    debugMode: false
+  fittoscreen:
+    mode: scaleFit
+  sound.howler: {}
+  touch:
+    mousetouch: true
+  tween: {}
+  transition: {}
+  random: {}
+textures:
+  - name: Button_Play
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 164
+      - 26
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 53
+    width: 128
+    height: 53
+    offx: 0
+    offy: 0
+    origname: i775ba15c-b1aa-4707-bc1e-d0811846a893.png
+    source: 'C:\Users\kheder\Downloads\Frame 1 (9).png'
+    shape: rect
+    left: 164
+    right: -36
+    top: 26
+    bottom: 27
+    uid: 775ba15c-b1aa-4707-bc1e-d0811846a893
+    padding: 1
+    r: 160
+    lastmod: 1656249865220
+    stripPoints:
+      - x: 0
+        'y': -24
+      - x: 51
+        'y': -7
+      - x: 32
+        'y': 19
+      - x: -32
+        'y': 19
+      - x: -51
+        'y': -7
+    closedStrip: true
+  - lastmod: 1656247454093
+    type: texture
+    name: darkPurple
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 256
+    imgHeight: 256
+    width: 256
+    height: 256
+    offx: 0
+    offy: 0
+    origname: izCpt8BGpRHhKQW.png
+    shape: rect
+    left: 0
+    right: 256
+    top: 0
+    bottom: 256
+    uid: zCpt8BGpRHhKQW
+    padding: 1
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\kheder\Downloads\spaceshooter\Backgrounds\darkPurple.png'
+    ignoreTiledUse: true
+  - lastmod: 1656249869436
+    type: texture
+    name: highscore
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - -9
+      - 1
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 121
+    offx: 0
+    offy: 0
+    origname: i7pC4H2fz7kG22z.png
+    shape: rect
+    left: 0
+    right: 512
+    top: 0
+    bottom: 512
+    uid: 7pC4H2fz7kG22z
+    padding: 1
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\kheder\Downloads\highscore (3).png'
+skeletons: []
+templates:
+  - name: Button_Play
+    depth: 0
+    oncreate: ''
+    onstep: |-
+      if (ct.touch.collideUi(this)) {
+          if (!this.pressed) {
+              this.pressed = true;
+              ct.transition.circleOut(1000, 0x073763).then(() => {
+                  ct.rooms.switch('Game');
+              });
+          }
+      }
+    ondraw: ''
+    ondestroy: ''
+    uid: 25ac0f9b-57ff-461d-8eb7-a9ce800b9c71
+    texture: 775ba15c-b1aa-4707-bc1e-d0811846a893
+    extends: {}
+    lastmod: 1656250049466
+  - type: template
+    name: highscore
+    depth: 0
+    oncreate: ''
+    onstep: |
+      if (ct.touch.collideUi(this)) {
+          if (!this.pressed) {
+              this.pressed = true;
+              ct.transition.circleOut(1000, 0x073763).then(() => {
+                  ct.rooms.switch('highscoreRoom');
+              });
+          }
+      }
+    ondraw: ''
+    ondestroy: ''
+    texture: 7pC4H2fz7kG22z
+    visible: true
+    extends: {}
+    lastmod: 1656250531424
+    uid: FN85FT7TP9c2kt
+sounds: []
+styles:
+  - name: ScoreText
+    uid: bdbDb97BrnjQ1m
+    origname: srnjQ1m
+    font:
+      family: ScoreText
+      size: 32
+      weight: '800'
+      italic: false
+      halign: left
+    fill:
+      type: '0'
+      color: '#54BEFF'
+    lastmod: 1656248359308
+  - name: highscoreText
+    uid: 3MR9npQJQBkgcL
+    origname: sQBkgcL
+    font:
+      family: sans-serif
+      size: 28
+      weight: '800'
+      italic: false
+    fill:
+      type: '0'
+      color: '#54BEFF'
+    lastmod: 1656250262222
+rooms:
+  - name: Game
+    oncreate: >-
+      this.score = 0;
+
+      this.scoreLabel = new PIXI.Text('Score: ' + this.score,
+      ct.styles.get('ScoreText'));
+
+      this.addChild(this.scoreLabel);
+
+      this.scoreLabel.x = 30;
+
+      this.scoreLabel.y = 30;
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    width: 1280
+    height: 720
+    backgrounds: []
+    copies: []
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    uid: c51bc37f-69c9-4eec-8c2b-332dab64a25a
+    thumbnail: 332dab64a25a
+    gridX: 64
+    gridY: 64
+    lastmod: 1656250410539
+    extends: {}
+    backgroundColor: '#000000'
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    width: 1280
+    height: 720
+    name: Room_64832W
+    backgrounds: []
+    copies:
+      - x: 768
+        'y': 384
+        uid: 25ac0f9b-57ff-461d-8eb7-a9ce800b9c71
+        exts: {}
+      - x: 600
+        'y': 448
+        uid: FN85FT7TP9c2kt
+        exts: {}
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    extends: {}
+    lastmod: 1656250173578
+    thumbnail: 2FKRqwLM64832W
+    uid: 2FKRqwLM64832W
+    restrictCamera: false
+  - type: room
+    oncreate: >-
+
+      this.scoreLabel = new PIXI.Text('Your highscore!: ' + this.score,
+      ct.styles.get('ScoreText'));
+
+      this.addChild(this.scoreLabel);
+
+      this.scoreLabel.x = 500;
+
+      this.scoreLabel.y = 100;
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    width: 1280
+    height: 720
+    name: highscoreRoom
+    backgrounds: []
+    copies:
+      - x: 768
+        'y': 384
+        uid: 25ac0f9b-57ff-461d-8eb7-a9ce800b9c71
+        exts: {}
+    tiles:
+      - depth: -10
+        tiles: []
+        extends: {}
+    extends: {}
+    lastmod: 1656250672608
+    thumbnail: J4WCkkz8gcp85f
+    uid: J4WCkkz8gcp85f
+actions:
+  - name: Poof
+    methods:
+      - code: touch.Any
+emitterTandems: []
+starting: 0
+settings:
+  export:
+    windows64: true
+    windows32: true
+    linux64: true
+    linux32: true
+    mac64: true
+    debug: false
+    functionWrap: false
+    codeModifier: none
+    windows: true
+  branding:
+    accent: '#446adb'
+    invertPreloaderScheme: true
+    splashScreen: 5c680919-3827-4ea7-9e72-a8fc81ddfb45
+  rendering:
+    maxFPS: 60
+    pixelatedrender: false
+    highDensity: true
+    usePixiLegacy: true
+    desktopMode: maximized
+    mobileScreenOrientation: portrait
+  authoring:
+    title: Kheder
+    author: test
+    site: 'https://ctjs.rocks/'
+    version:
+      - 1
+      - 0
+      - 0
+    versionPostfix: ''
+    appId: rocks.ctjs.test
+  fps: 30
+scripts: []
+fonts: []
+startroom: 2FKRqwLM64832W
+palette: []
+styletick: .nan
+contentTypes: []
+groups:
+  fonts: []
+  textures: []
+  styles: []
+  rooms: []
+  sounds: []
+  emitterTandems: []
+  templates: []
